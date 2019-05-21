@@ -36,7 +36,6 @@ def dig_log_files(files):
         print(filename)
         with open(filename) as f:
             for line in f:
-                print(result)
                 endpoint = parse_log(line)
                 if endpoint in result:
                     result[endpoint] += 1
@@ -49,6 +48,6 @@ if __name__ == '__main__':
     files = get_files()
     data = dig_log_files(files)
 
-    data = sorted(data.items(), key=lambda x: x[1])
+    data = sorted(data.items(), key=lambda x: x[1], reverse=True)
     print(data)
 
